@@ -24,7 +24,7 @@ object Kafka10WordCount {
     kafkaParams.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer])
     kafkaParams.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer])
 
-    val conf = new SparkConf().setAppName("Kafka10wordcount")
+    val conf = new SparkConf().setAppName("Kafka10wordcount").setMaster("local[*]")
 
     //Configure batch of 30 seconds
     val sparkStreamingContext = new StreamingContext(conf, Durations.seconds(30))
